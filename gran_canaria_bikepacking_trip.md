@@ -73,8 +73,12 @@ flowchart LR
 
 ## 🗺️ Route & Navigation Resources
 
-* **Interactive Route Studio Artifact**: [gran_canaria_route_comparison_map.html](file:///Users/michaelcadelago/.gemini/antigravity/brain/c45d2fb6-3f88-4ebf-9041-da20ad86bf64/gran_canaria_route_comparison_map.html) *(Features dual independent proposals **Proposal P** & **Proposal Q**, active proposal switcher, separate map layer toggles, and live Unit System Toggle: Imperial [mi / ft] ⇄ Metric [km / m])*
-* **Standalone Browser Map**: [gran_canaria_overlay_map.html](file:///Users/michaelcadelago/Documents/antigravity/kind-shannon/gran_canaria_overlay_map.html) *(Features interactive Unit Toggle, base map switcher, independent Proposal P and Proposal Q layers, and confirmed lodging pins)*
+* **🌐 Permanent Public Web App (GitHub Pages)**:
+  * **[Fullscreen Interactive Map](https://mcadelago.github.io/gran-canaria-bikepacking/)** *(Default Light OSM basemap, imperial units, independent Proposal P and Proposal Q layers, campsite/lodging pins)*
+  * **[Stage & Elevation Studio](https://mcadelago.github.io/gran-canaria-bikepacking/studio.html)** *(Interactive elevation profiles, stage sidebar switcher, and POI inspector)*
+  * **[GitHub Repository](https://github.com/mcadelago/gran-canaria-bikepacking)** *(Source code, HTML maps, and raw GPX downloads)*
+* **Interactive Route Studio Artifact**: [gran_canaria_route_comparison_map.html](file:///Users/michaelcadelago/.gemini/antigravity/brain/c45d2fb6-3f88-4ebf-9041-da20ad86bf64/gran_canaria_route_comparison_map.html)
+* **Standalone Browser Map**: [gran_canaria_overlay_map.html](file:///Users/michaelcadelago/Documents/antigravity/kind-shannon/gran_canaria_overlay_map.html)
 * **Proposed Stages GPX Tracks**:
   * **Proposal P (Primary Baseline)**:
     * [Proposed_Stage_P1_Maspalomas_to_Morro_de_Santiago_Campsite.gpx](file:///Users/michaelcadelago/Documents/antigravity/kind-shannon/gpx/Proposed_Stage_P1_Maspalomas_to_Morro_de_Santiago_Campsite.gpx) — `33.3 mi` (`53.6 km`) • `+5,686 ft / -1,886 ft` (`+1,733m / -575m`) — *Passing through Tunte and climbing up into the Morro de Santiago pine forest campsite*
