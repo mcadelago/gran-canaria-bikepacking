@@ -29,10 +29,10 @@ All GPX tracks are available in the [`gpx/`](gpx/) folder:
 * [P5: Tamadaba Wild Camp ➔ Presa de las Niñas](gpx/Proposed_Stage_P5_Incredible_Wild_Camp_to_Presa_de_las_Ninas.gpx) (`32.4 mi`, `+5,522 ft`)
 * [P6: Presa de las Niñas ➔ Maspalomas Finish](gpx/Proposed_Stage_P6_Presa_de_las_Ninas_to_Maspalomas_RWGPS_Finish.gpx) (`26.6 mi`, `+955 ft`)
 
-### Proposal Q
-* [Q1: Maspalomas ➔ Morro de Santiago Campsite](gpx/Proposed_Stage_Q1_Maspalomas_to_Morro_de_Santiago_Campsite.gpx)
-* [Q2: Morro de Santiago Campsite ➔ Cruz de Tejeda](gpx/Proposed_Stage_Q2_Morro_de_Santiago_Campsite_to_Cruz_de_Tejeda.gpx)
-* [Q3: Cruz de Tejeda ➔ Agaete](gpx/Proposed_Stage_Q3_Cruz_de_Tejeda_to_Agaete.gpx)
-* [Q4: Agaete ➔ Tamadaba Wild Camp](gpx/Proposed_Stage_Q4_Agaete_to_Incredible_Wild_Camp.gpx)
-* [Q5: Tamadaba Wild Camp ➔ Presa de las Niñas](gpx/Proposed_Stage_Q5_Incredible_Wild_Camp_to_Presa_de_las_Ninas.gpx)
-* [Q6: Presa de las Niñas ➔ Maspalomas Finish](gpx/Proposed_Stage_Q6_Presa_de_las_Ninas_to_Maspalomas_RWGPS_Finish.gpx)
+### Proposal Q (Alternative Split: Overnight at Cliff Caves)
+* [Q1: Maspalomas ➔ Morro de Santiago Campsite](gpx/Proposed_Stage_Q1_Maspalomas_to_Morro_de_Santiago_Campsite.gpx) (`33.3 mi`, `+5,686 ft`)
+* [Q2: Morro de Santiago Campsite ➔ Cruz de Tejeda](gpx/Proposed_Stage_Q2_Morro_de_Santiago_Campsite_to_Cruz_de_Tejeda.gpx) (`17.6 mi`, `+3,235 ft`)
+* [Q3: Cruz de Tejeda ➔ Caves Campsite](gpx/Proposed_Stage_Q3_Cruz_de_Tejeda_to_Caves_Campsite.gpx) (`13.8 mi`, `+1,339 ft`) — *Overnight in the cliff caves beside the trail*
+* [Q4: Caves Campsite ➔ Agaete ➔ Incredible Wild Camp](gpx/Proposed_Stage_Q4_Caves_Campsite_to_Incredible_Wild_Camp.gpx) (`27.5 mi`, `+5,052 ft`) — *Descends through Agaete and climbs to Tamadaba Ridge*
+* [Q5: Incredible Wild Camp ➔ Presa de las Niñas](gpx/Proposed_Stage_Q5_Incredible_Wild_Camp_to_Presa_de_las_Ninas.gpx) (`32.4 mi`, `+5,522 ft`)
+* [Q6: Presa de las Niñas ➔ Maspalomas Finish](gpx/Proposed_Stage_Q6_Presa_de_las_Ninas_to_Maspalomas_RWGPS_Finish.gpx) (`26.6 mi`, `+955 ft`)

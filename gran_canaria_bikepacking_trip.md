@@ -88,14 +88,14 @@ flowchart LR
     * [Proposed_Stage_P5_Incredible_Wild_Camp_to_Presa_de_las_Ninas.gpx](file:///Users/michaelcadelago/Documents/antigravity/kind-shannon/gpx/Proposed_Stage_P5_Incredible_Wild_Camp_to_Presa_de_las_Ninas.gpx) — `32.4 mi` (`52.1 km`) • `+5,522 ft / -5,335 ft` (`+1,683m / -1,626m`) — *Traversing Caldera de Tejeda & Roque Bentayga to Presa de las Niñas campsite*
     * [Proposed_Stage_P6_Presa_de_las_Ninas_to_Maspalomas_RWGPS_Finish.gpx](file:///Users/michaelcadelago/Documents/antigravity/kind-shannon/gpx/Proposed_Stage_P6_Presa_de_las_Ninas_to_Maspalomas_RWGPS_Finish.gpx) — `26.6 mi` (`42.8 km`) • `+955 ft / -3,990 ft` (`+291m / -1,216m`) — *Following RWGPS down Soria canyon to the Faro de Maspalomas finish line*
     * *Cumulative Loop (P1–P6)*: **`151.2 mi` (`243.3 km`)** • **`+21,788 ft` (`+6,641m`)** climbing / **`-21,857 ft` (`-6,662m`)** descent
-  * **Proposal Q (Secondary Editable Alternative)**:
+  * **Proposal Q (Alternative Split: Overnight at Cliff Caves Campsite)**:
     * [Proposed_Stage_Q1_Maspalomas_to_Morro_de_Santiago_Campsite.gpx](file:///Users/michaelcadelago/Documents/antigravity/kind-shannon/gpx/Proposed_Stage_Q1_Maspalomas_to_Morro_de_Santiago_Campsite.gpx) — `33.3 mi` (`53.6 km`) • `+5,686 ft`
     * [Proposed_Stage_Q2_Morro_de_Santiago_Campsite_to_Cruz_de_Tejeda.gpx](file:///Users/michaelcadelago/Documents/antigravity/kind-shannon/gpx/Proposed_Stage_Q2_Morro_de_Santiago_Campsite_to_Cruz_de_Tejeda.gpx) — `17.6 mi` (`28.3 km`) • `+3,235 ft`
-    * [Proposed_Stage_Q3_Cruz_de_Tejeda_to_Agaete.gpx](file:///Users/michaelcadelago/Documents/antigravity/kind-shannon/gpx/Proposed_Stage_Q3_Cruz_de_Tejeda_to_Agaete.gpx) — `21.1 mi` (`34.0 km`) • `+1,516 ft`
-    * [Proposed_Stage_Q4_Agaete_to_Incredible_Wild_Camp.gpx](file:///Users/michaelcadelago/Documents/antigravity/kind-shannon/gpx/Proposed_Stage_Q4_Agaete_to_Incredible_Wild_Camp.gpx) — `20.2 mi` (`32.5 km`) • `+4,875 ft`
+    * [Proposed_Stage_Q3_Cruz_de_Tejeda_to_Caves_Campsite.gpx](file:///Users/michaelcadelago/Documents/antigravity/kind-shannon/gpx/Proposed_Stage_Q3_Cruz_de_Tejeda_to_Caves_Campsite.gpx) — `13.8 mi` (`22.2 km`) • `+1,339 ft / -4,154 ft` (`+408m / -1,266m`) — *Ends at the cliff-carved Caves campsite beside the trail*
+    * [Proposed_Stage_Q4_Caves_Campsite_to_Incredible_Wild_Camp.gpx](file:///Users/michaelcadelago/Documents/antigravity/kind-shannon/gpx/Proposed_Stage_Q4_Caves_Campsite_to_Incredible_Wild_Camp.gpx) — `27.5 mi` (`44.3 km`) • `+5,052 ft / -4,367 ft` (`+1,540m / -1,331m`) — *Descends through Agaete / Puerto de las Nieves (sea level) and climbs up to the Tamadaba Ridge overlook*
     * [Proposed_Stage_Q5_Incredible_Wild_Camp_to_Presa_de_las_Ninas.gpx](file:///Users/michaelcadelago/Documents/antigravity/kind-shannon/gpx/Proposed_Stage_Q5_Incredible_Wild_Camp_to_Presa_de_las_Ninas.gpx) — `32.4 mi` (`52.1 km`) • `+5,522 ft`
     * [Proposed_Stage_Q6_Presa_de_las_Ninas_to_Maspalomas_RWGPS_Finish.gpx](file:///Users/michaelcadelago/Documents/antigravity/kind-shannon/gpx/Proposed_Stage_Q6_Presa_de_las_Ninas_to_Maspalomas_RWGPS_Finish.gpx) — `26.6 mi` (`42.8 km`) • `+955 ft`
-    * *Cumulative Loop (Q1–Q6)*: Matches Proposal P initially; ready for independent modifications.
+    * *Cumulative Loop (Q1–Q6)*: **`151.2 mi` (`243.3 km`)** • **`+21,788 ft` (`+6,641m`)** climbing
 * **RideWithGPS Route**: [Gran Canaria Grande (#42257354)](https://ridewithgps.com/routes/42257354) — `149.4 mi` (`240.4 km`), `+21,296 ft` (`+6,491m`), 26 POIs (10 Campsites, 16 Resupply/Viewpoints).
 * **Komoot Collection**: [Bikepacking Grand Canaria Spanje 2025 (#3353676)](https://www.komoot.com/collection/3353676/-bikepacking-grand-canaria-spanje-2025) — `163.5 mi` (`263.2 km`), `+23,195 ft` (`+7,070m`)
 
