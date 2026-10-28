@@ -36,6 +36,10 @@
         <p id="leafletSubtitle">Independent layers for <b>Proposed P</b> and <b>Proposed Q</b> (<span id="leafProposedStats">151.2 mi, +21,788 ft</span>). <b>🏨 Booked Lodging</b>, <b>⛺ Campsites</b>, and <b>📍 POIs</b> are interactive.</p>
       </div>
       <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="display: flex; align-items: center; background: rgba(30,41,59,0.85); border: 1px solid rgba(255,255,255,0.18); border-radius: 8px; padding: 2px;">
+          <button id="btnLeafletP" style="padding: 4px 9px; border-radius: 6px; font-size: 11px; font-weight: 700; border: none; cursor: pointer; background: #a3e635; color: #0f172a; transition: all 0.2s;" title="Show Proposal P Route Only">Prop P</button>
+          <button id="btnLeafletQ" style="padding: 4px 9px; border-radius: 6px; font-size: 11px; font-weight: 700; border: none; cursor: pointer; background: transparent; color: #94a3b8; transition: all 0.2s;" title="Show Proposal Q Route Only">Prop Q</button>
+        </div>
         <button id="btnToggleUnitsLeaflet" class="btn-unit-toggle" title="Toggle between Imperial (mi/ft) and Metric (km/m)">
           📏 <span id="leafletUnitLabel">Units: Imperial (mi / ft)</span>
         </button>
@@ -89,12 +93,33 @@
     const rwgpsGroup = L.layerGroup().addTo(map);
     const komootGroup = L.layerGroup().addTo(map);
     const proposedPGroup = L.layerGroup().addTo(map);
-    const proposedQGroup = L.layerGroup().addTo(map);
+    const proposedQGroup = L.layerGroup();
     const bookedGroup = L.layerGroup().addTo(map);
     const campsiteGroup = L.layerGroup().addTo(map);
     const otherPoiGroup = L.layerGroup();
     const accomGroup = L.layerGroup();
     const divGroup = L.layerGroup();
+
+    const btnLeafletP = document.getElementById('btnLeafletP');
+    const btnLeafletQ = document.getElementById('btnLeafletQ');
+    if (btnLeafletP && btnLeafletQ) {
+      btnLeafletP.onclick = () => {
+        if (!map.hasLayer(proposedPGroup)) map.addLayer(proposedPGroup);
+        if (map.hasLayer(proposedQGroup)) map.removeLayer(proposedQGroup);
+        btnLeafletP.style.background = '#a3e635';
+        btnLeafletP.style.color = '#0f172a';
+        btnLeafletQ.style.background = 'transparent';
+        btnLeafletQ.style.color = '#94a3b8';
+      };
+      btnLeafletQ.onclick = () => {
+        if (map.hasLayer(proposedPGroup)) map.removeLayer(proposedPGroup);
+        if (!map.hasLayer(proposedQGroup)) map.addLayer(proposedQGroup);
+        btnLeafletQ.style.background = '#f472b6';
+        btnLeafletQ.style.color = '#0f172a';
+        btnLeafletP.style.background = 'transparent';
+        btnLeafletP.style.color = '#94a3b8';
+      };
+    }
 
     let layerControl = null;
 

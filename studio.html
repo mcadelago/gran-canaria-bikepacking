@@ -32,7 +32,7 @@
   </style>
 </head>
 <body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-4 select-none">
-  <!-- INTERACTIVE_ROUTE_AND_CAMPSITE_STUDIO_V15_DARK_MODE -->
+  <!-- INTERACTIVE_ROUTE_AND_CAMPSITE_STUDIO_V18_AUTO_TOGGLE_PROPOSALS -->
   <div class="max-w-7xl mx-auto space-y-4">
     <!-- Top Header & Controls -->
     <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
@@ -65,7 +65,7 @@
         <button id="btnToggleProposedP" class="px-3 py-1.5 rounded-lg font-semibold border border-lime-500/60 bg-lime-500/20 text-lime-400 flex items-center gap-1.5 transition">
           <span class="w-3.5 h-1.5 bg-lime-400 rounded"></span> <span id="propPBtnLabel">Proposed P (151.2 mi)</span>
         </button>
-        <button id="btnToggleProposedQ" class="px-3 py-1.5 rounded-lg font-semibold border border-fuchsia-500/60 bg-fuchsia-500/20 text-fuchsia-300 flex items-center gap-1.5 transition">
+        <button id="btnToggleProposedQ" class="px-3 py-1.5 rounded-lg font-semibold border border-fuchsia-500/60 bg-fuchsia-500/20 text-fuchsia-300 flex items-center gap-1.5 transition" style="opacity:0.45">
           <span class="w-3.5 h-1.5 bg-fuchsia-400 rounded"></span> <span id="propQBtnLabel">Proposed Q (151.2 mi)</span>
         </button>
 
@@ -210,7 +210,7 @@
       basemapIndex: 0,
       showBookedLodging: true,
       showProposedP: true,
-      showProposedQ: true,
+      showProposedQ: false,
       showRwgps: true,
       showKomoot: true,
       showCampsites: true,
@@ -1082,16 +1082,30 @@
       state.selectedProposalTab = 'P';
       btnTabPropP.className = 'px-2.5 py-1 rounded bg-[var(--card)] text-lime-400 shadow-sm transition';
       btnTabPropQ.className = 'px-2.5 py-1 rounded text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition';
+      state.showProposedP = true;
+      state.showProposedQ = false;
+      const bP = document.getElementById('btnToggleProposedP');
+      const bQ = document.getElementById('btnToggleProposedQ');
+      if (bP) bP.style.opacity = '1.0';
+      if (bQ) bQ.style.opacity = '0.45';
       renderProposedList();
       renderStageFilterButtons();
+      drawAll();
     };
 
     btnTabPropQ.onclick = () => {
       state.selectedProposalTab = 'Q';
       btnTabPropQ.className = 'px-2.5 py-1 rounded bg-[var(--card)] text-fuchsia-300 shadow-sm transition';
       btnTabPropP.className = 'px-2.5 py-1 rounded text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition';
+      state.showProposedP = false;
+      state.showProposedQ = true;
+      const bP = document.getElementById('btnToggleProposedP');
+      const bQ = document.getElementById('btnToggleProposedQ');
+      if (bP) bP.style.opacity = '0.45';
+      if (bQ) bQ.style.opacity = '1.0';
       renderProposedList();
       renderStageFilterButtons();
+      drawAll();
     };
 
     // Render Booked Lodging (2)
