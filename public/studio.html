@@ -32,7 +32,7 @@
   </style>
 </head>
 <body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-4 select-none">
-  <!-- INTERACTIVE_ROUTE_AND_CAMPSITE_STUDIO_V18_AUTO_TOGGLE_PROPOSALS -->
+  <!-- INTERACTIVE_ROUTE_AND_CAMPSITE_STUDIO_V19_FIX_PROPOSAL_Q_ELEVATION_HOVER -->
   <div class="max-w-7xl mx-auto space-y-4">
     <!-- Top Header & Controls -->
     <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
@@ -879,13 +879,49 @@
         });
       }
 
-      // 3b. Proposed Stages Q1–Q6 (Foreground Dashed)
+      // 3b. Proposed Stages Q1–Q6
       if (state.showProposedQ && qStages.length > 0) {
         qStages.forEach(qst => {
           if (!state.activeProposedQ[qst.stage]) return;
           const col = Q_COLORS[(qst.stage - 1) % Q_COLORS.length];
 
-          eleCtx.setLineDash([6, 4]);
+          // Area Fill Under Curve when Q is shown without P
+          if (!state.showProposedP) {
+            eleCtx.beginPath();
+            let firstX = 0, lastX = 0;
+            qst.points.forEach(([, , ele, dist], i) => {
+              const x = padL + (dist / maxDistKm) * plotW;
+              const y = padT + plotH * (1 - Math.max(0, ele) / maxEleM);
+              if (i === 0) {
+                eleCtx.moveTo(x, padT + plotH);
+                eleCtx.lineTo(x, y);
+                firstX = x;
+              } else {
+                eleCtx.lineTo(x, y);
+              }
+              lastX = x;
+            });
+            eleCtx.lineTo(lastX, padT + plotH);
+            eleCtx.closePath();
+            eleCtx.fillStyle = 'rgba(232, 121, 249, 0.12)';
+            eleCtx.fill();
+
+            // Dark halo mask
+            eleCtx.beginPath();
+            qst.points.forEach(([, , ele, dist], i) => {
+              const x = padL + (dist / maxDistKm) * plotW;
+              const y = padT + plotH * (1 - Math.max(0, ele) / maxEleM);
+              if (i === 0) eleCtx.moveTo(x, y);
+              else eleCtx.lineTo(x, y);
+            });
+            eleCtx.strokeStyle = isLight ? '#ffffff' : '#090d16';
+            eleCtx.lineWidth = 5.5;
+            eleCtx.stroke();
+          }
+
+          if (state.showProposedP) {
+            eleCtx.setLineDash([6, 4]);
+          }
           eleCtx.beginPath();
           qst.points.forEach(([, , ele, dist], i) => {
             const x = padL + (dist / maxDistKm) * plotW;
@@ -894,7 +930,7 @@
             else eleCtx.lineTo(x, y);
           });
           eleCtx.strokeStyle = col;
-          eleCtx.lineWidth = 2.6;
+          eleCtx.lineWidth = state.showProposedP ? 2.6 : 3.6;
           eleCtx.stroke();
           eleCtx.setLineDash([]);
         });
@@ -1681,32 +1717,42 @@
         const [lat, lon] = xyToLatLon(mx, my, rect.width, rect.height);
         let bestD = 999, bestPt = null;
 
-        // Check Proposal P
-        if (state.showProposedP && pStages.length > 0) {
-          pStages.forEach(pst => {
-            if (!state.activeProposedP[pst.stage]) return;
-            pst.points.forEach(([plat, plon, pele, pdist]) => {
-              const d = Math.hypot(plat - lat, (plon - lon) * 0.883);
-              if (d < bestD) {
-                bestD = d;
-                bestPt = {lat: plat, lon: plon, ele: pele, dist: pdist, source: 'Proposed Stage P' + pst.stage};
-              }
+        const checkMapQ = () => {
+          if (state.showProposedQ && qStages.length > 0) {
+            qStages.forEach(qst => {
+              if (!state.activeProposedQ[qst.stage]) return;
+              qst.points.forEach(([qlat, qlon, qele, qdist]) => {
+                const d = Math.hypot(qlat - lat, (qlon - lon) * 0.883);
+                if (d < bestD) {
+                  bestD = d;
+                  bestPt = {lat: qlat, lon: qlon, ele: qele, dist: qdist, source: 'Proposed Stage Q' + qst.stage};
+                }
+              });
             });
-          });
-        }
+          }
+        };
 
-        // Check Proposal Q
-        if (state.showProposedQ && qStages.length > 0) {
-          qStages.forEach(qst => {
-            if (!state.activeProposedQ[qst.stage]) return;
-            qst.points.forEach(([qlat, qlon, qele, qdist]) => {
-              const d = Math.hypot(qlat - lat, (qlon - lon) * 0.883);
-              if (d < bestD) {
-                bestD = d;
-                bestPt = {lat: qlat, lon: qlon, ele: qele, dist: qdist, source: 'Proposed Stage Q' + qst.stage};
-              }
+        const checkMapP = () => {
+          if (state.showProposedP && pStages.length > 0) {
+            pStages.forEach(pst => {
+              if (!state.activeProposedP[pst.stage]) return;
+              pst.points.forEach(([plat, plon, pele, pdist]) => {
+                const d = Math.hypot(plat - lat, (plon - lon) * 0.883);
+                if (d < bestD) {
+                  bestD = d;
+                  bestPt = {lat: plat, lon: plon, ele: pele, dist: pdist, source: 'Proposed Stage P' + pst.stage};
+                }
+              });
             });
-          });
+          }
+        };
+
+        if (state.selectedProposalTab === 'Q' || (!state.showProposedP && state.showProposedQ)) {
+          checkMapQ();
+          if (bestD > 0.04) checkMapP();
+        } else {
+          checkMapP();
+          if (bestD > 0.04) checkMapQ();
         }
 
         DATA.rwgps.forEach(([rlat, rlon, rele, rdist]) => {
@@ -1750,30 +1796,44 @@
       const targetDistKm = Math.max(0, Math.min(265, ((x - padL) / plotW) * 265));
       let bestPt = null, bestDiff = 9999;
 
-      if (state.showProposedP && pStages.length > 0) {
-        pStages.forEach(pst => {
-          if (!state.activeProposedP[pst.stage]) return;
-          pst.points.forEach(([plat, plon, pele, pdist]) => {
-            const diff = Math.abs(pdist - targetDistKm);
-            if (diff < bestDiff) {
-              bestDiff = diff;
-              bestPt = {lat: plat, lon: plon, ele: pele, dist: pdist, source: 'Proposed Stage P' + pst.stage};
-            }
+      const checkEleQ = () => {
+        if (state.showProposedQ && qStages.length > 0) {
+          qStages.forEach(qst => {
+            if (!state.activeProposedQ[qst.stage]) return;
+            qst.points.forEach(([qlat, qlon, qele, qdist]) => {
+              const diff = Math.abs(qdist - targetDistKm);
+              if (diff < bestDiff) {
+                bestDiff = diff;
+                bestPt = {lat: qlat, lon: qlon, ele: qele, dist: qdist, source: 'Proposed Stage Q' + qst.stage};
+              }
+            });
           });
-        });
-      }
-      if (state.showProposedQ && qStages.length > 0) {
-        qStages.forEach(qst => {
-          if (!state.activeProposedQ[qst.stage]) return;
-          qst.points.forEach(([qlat, qlon, qele, qdist]) => {
-            const diff = Math.abs(pdist - targetDistKm);
-            if (diff < bestDiff) {
-              bestDiff = diff;
-              bestPt = {lat: qlat, lon: qlon, ele: qele, dist: qdist, source: 'Proposed Stage Q' + qst.stage};
-            }
+        }
+      };
+
+      const checkEleP = () => {
+        if (state.showProposedP && pStages.length > 0) {
+          pStages.forEach(pst => {
+            if (!state.activeProposedP[pst.stage]) return;
+            pst.points.forEach(([plat, plon, pele, pdist]) => {
+              const diff = Math.abs(pdist - targetDistKm);
+              if (diff < bestDiff) {
+                bestDiff = diff;
+                bestPt = {lat: plat, lon: plon, ele: pele, dist: pdist, source: 'Proposed Stage P' + pst.stage};
+              }
+            });
           });
-        });
+        }
+      };
+
+      if (state.selectedProposalTab === 'Q' || (!state.showProposedP && state.showProposedQ)) {
+        checkEleQ();
+        if (!bestPt) checkEleP();
+      } else {
+        checkEleP();
+        if (!bestPt) checkEleQ();
       }
+
       if (!bestPt) {
         DATA.rwgps.forEach(([plat, plon, pele, pdist]) => {
           const diff = Math.abs(pdist - targetDistKm);
